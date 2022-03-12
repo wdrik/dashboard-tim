@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
+import { SelectChangeEvent } from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+
 import CardWrapper from '../../components/CardWrapper';
 import HorizontalBarChart from '../../components/HorizontalBarChart';
 import CustomChart from '../../components/CustomChart';
@@ -8,9 +12,7 @@ import RadarChart from '../../components/RadarChart';
 import DoughnutChart from '../../components/DoughnutChart';
 import PartnerInfo from '../../components/PartnerInfo';
 import MultiSelect from '../../components/MultiSelect';
-import { SelectChangeEvent } from '@mui/material/Select';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import CustomDatePicker from '../../components/CustomDatePicker';
 
 // import { useFetch } from '../../hooks/useFetch';
 
@@ -29,6 +31,7 @@ type IForm = {
   product: string[];
   typeOfCommission: string[];
   custcode: string[];
+  date: Date | null;
 };
 
 function CommissionDashboard() {
@@ -36,6 +39,7 @@ function CommissionDashboard() {
     product: [],
     typeOfCommission: [],
     custcode: [],
+    date: new Date(),
   });
 
   const handleChange = (event: SelectChangeEvent<string[]>) => {
@@ -49,10 +53,17 @@ function CommissionDashboard() {
     });
   };
 
+  const handleDateChange = (newValue: Date | null) => {
+    setForm({
+      ...form,
+      date: newValue,
+    });
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log(form);
+    console.log('form submitted', form);
   };
 
   return (
@@ -100,6 +111,11 @@ function CommissionDashboard() {
             alignItems: 'flex-end',
           }}
         >
+          <CustomDatePicker
+            inputValue={form.date}
+            handleChange={handleDateChange}
+          />
+
           <MultiSelect
             tag="Produto"
             options={['Bradley Wilkerson', 'Virginia Andrews', 'Kelly Snyder']}
