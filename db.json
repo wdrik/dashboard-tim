@@ -1,0 +1,59 @@
+{
+  "ds_comissionamento_parceiro": [
+    {
+      "id_ge": 12345,
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "produto": "BANDA LARGA",
+      "ddd": "11",
+      "origem_comissao": "COMISSAO BASICA",
+      "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
+      "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
+      "total_apurado": "340.000,90"
+    },
+    {
+      "id_ge": 12346,
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "produto": "BANDA LARGA",
+      "ddd": "11",
+      "origem_comissao": "COMISSAO BASICA",
+      "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
+      "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
+      "total_apurado": "239.994,00"
+    },
+    {
+      "id_ge": 12347,
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "produto": "BANDA LARGA",
+      "ddd": "11",
+      "origem_comissao": "COMISSAO BASICA",
+      "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
+      "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
+      "total_apurado": "-500.000,00"
+    },
+    {
+      "id_ge": 12348,
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "produto": "BANDA LARGA",
+      "ddd": "11",
+      "origem_comissao": "COMISSAO BASICA",
+      "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
+      "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
+      "total_apurado": "100.000,00"
+    },
+    {
+      "id_ge": 12349,
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "produto": "BANDA LARGA",
+      "ddd": "11",
+      "origem_comissao": "COMISSAO BASICA",
+      "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
+      "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
+      "total_apurado": "100.000,00"
+    }
+  ]
+}

@@ -1,21 +1,59 @@
-import Grid from '@mui/material/Grid';
+import { useState } from 'react';
 
+import Grid from '@mui/material/Grid';
 import CardWrapper from '../../components/CardWrapper';
 import HorizontalBarChart from '../../components/HorizontalBarChart';
 import CustomChart from '../../components/CustomChart';
 import RadarChart from '../../components/RadarChart';
 import DoughnutChart from '../../components/DoughnutChart';
 import PartnerInfo from '../../components/PartnerInfo';
+import MultiSelect from '../../components/MultiSelect';
+import { SelectChangeEvent } from '@mui/material/Select';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
-import { useFetch } from '../../hooks/useFetch';
+// import { useFetch } from '../../hooks/useFetch';
 
-type Repository = {
-  full_name: string;
+// type Repository = {
+//   full_name: string;
+// };
+
+// const { data: posts, isFetching } = useFetch<Repository[]>(
+//   '/ds_comissionamento_parceiro'
+// );
+
+// console.log(posts);
+// console.log(isFetching);
+
+type IForm = {
+  product: string[];
+  typeOfCommission: string[];
+  custcode: string[];
 };
 
 function CommissionDashboard() {
-  // const { data: repositories, isFetching } =
-  //   useFetch<Repository[]>('users/wdrik/repos');
+  const [form, setForm] = useState<IForm>({
+    product: [],
+    typeOfCommission: [],
+    custcode: [],
+  });
+
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
+    const {
+      target: { value, name },
+    } = event;
+
+    setForm({
+      ...form,
+      [name]: typeof value === 'string' ? value.split(',') : value,
+    });
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    console.log(form);
+  };
 
   return (
     <Grid container spacing={2} my={1}>
@@ -48,6 +86,48 @@ function CommissionDashboard() {
 
       <Grid item xs={2}>
         <RadarChart />
+      </Grid>
+
+      <Grid item xs={3}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          autoComplete="off"
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-end',
+          }}
+        >
+          <MultiSelect
+            tag="Produto"
+            options={['Bradley Wilkerson', 'Virginia Andrews', 'Kelly Snyder']}
+            name="product"
+            inputValue={form.product}
+            handleChange={handleChange}
+          />
+
+          <MultiSelect
+            tag="Tipo de Comissão"
+            options={['Oliver Hansen', 'Van Henry', 'April Tucker']}
+            name="typeOfCommission"
+            inputValue={form.typeOfCommission}
+            handleChange={handleChange}
+          />
+
+          <MultiSelect
+            tag="Custcode"
+            options={['Omar Alexander', 'Carlos Abbott', 'Miriam Wagner']}
+            name="custcode"
+            inputValue={form.custcode}
+            handleChange={handleChange}
+          />
+
+          <Button variant="contained" size="small" type="submit">
+            Filtrar
+          </Button>
+        </Box>
       </Grid>
 
       <Grid item xs={4}>
