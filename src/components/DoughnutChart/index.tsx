@@ -3,21 +3,34 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
-  labels: ['Red', 'Blue'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [3, 19],
-      backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-      borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
-      borderWidth: 1,
-    },
-  ],
-};
+interface DoughnutChartProps {
+  labels: string[];
+  data: number[];
+}
 
-function DoughnutChart() {
-  return <Doughnut data={data} />;
+function DoughnutChart({ labels, data }: DoughnutChartProps) {
+  const chartData = {
+    labels,
+    datasets: [
+      {
+        label: '# of Votes',
+        data,
+        backgroundColor: [
+          'rgba(65, 136, 80, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+        ],
+        borderColor: [
+          'rgba(65, 136, 80, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 99, 132, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  return <Doughnut data={chartData} />;
 }
 
 export default DoughnutChart;

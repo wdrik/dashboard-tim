@@ -14,18 +14,8 @@ import PartnerInfo from '../../components/PartnerInfo';
 import MultiSelect from '../../components/MultiSelect';
 import CustomDatePicker from '../../components/CustomDatePicker';
 
-// import { useFetch } from '../../hooks/useFetch';
-
-// type Repository = {
-//   full_name: string;
-// };
-
-// const { data: posts, isFetching } = useFetch<Repository[]>(
-//   '/ds_comissionamento_parceiro'
-// );
-
-// console.log(posts);
-// console.log(isFetching);
+import { useFetch } from '../../hooks/useFetch';
+import { IPartnerContestation } from '../../@types';
 
 type IForm = {
   product: string[];
@@ -35,6 +25,10 @@ type IForm = {
 };
 
 function CommissionDashboard() {
+  const { data: partnerContestation } = useFetch<IPartnerContestation[]>(
+    '/ds_contestacao_parceiro'
+  );
+
   const [form, setForm] = useState<IForm>({
     product: [],
     typeOfCommission: [],
@@ -155,7 +149,12 @@ function CommissionDashboard() {
       </Grid>
 
       <Grid item xs={2}>
-        <DoughnutChart />
+        {partnerContestation && (
+          <DoughnutChart
+            labels={partnerContestation?.map((x) => x.status_contestacao)}
+            data={partnerContestation?.map((x) => x.total_volume)}
+          />
+        )}
       </Grid>
     </Grid>
   );

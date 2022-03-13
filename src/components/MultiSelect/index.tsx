@@ -14,23 +14,29 @@ interface MultiSelectProps {
   handleChange: (event: SelectChangeEvent<string[]>) => void;
 }
 
-function MultiSelect(props: MultiSelectProps) {
+function MultiSelect({
+  tag,
+  name,
+  options,
+  inputValue,
+  handleChange,
+}: MultiSelectProps) {
   return (
     <FormControl sx={{ width: '100%', mb: 2 }}>
-      <InputLabel id="multiple-checkbox-label">{props.tag}</InputLabel>
+      <InputLabel id="multiple-checkbox-label">{tag}</InputLabel>
       <Select
         labelId="multiple-checkbox-label"
         id="multiple-checkbox"
         multiple
-        name={props.name}
-        value={props.inputValue}
-        onChange={props.handleChange}
-        input={<OutlinedInput size="small" label={props.tag} />}
+        name={name}
+        value={inputValue}
+        onChange={handleChange}
+        input={<OutlinedInput size="small" label={tag} />}
         renderValue={(selected) => selected.join(', ')}
       >
-        {props.options.map((option) => (
+        {options.map((option) => (
           <MenuItem key={option} value={option}>
-            <Checkbox checked={props.inputValue.indexOf(option) > -1} />
+            <Checkbox checked={inputValue.indexOf(option) > -1} />
             <ListItemText primary={option} />
           </MenuItem>
         ))}

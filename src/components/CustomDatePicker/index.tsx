@@ -11,7 +11,7 @@ interface CustomDatePickerProps {
   handleChange: (newValue: Date | null) => void;
 }
 
-function CustomDatePicker(props: CustomDatePickerProps) {
+function CustomDatePicker({ inputValue, handleChange }: CustomDatePickerProps) {
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <FormControl sx={{ width: '100%', mb: 2 }}>
@@ -20,9 +20,9 @@ function CustomDatePicker(props: CustomDatePickerProps) {
           label="Mês e Ano"
           minDate={new Date('2012-03-01')}
           maxDate={new Date('2023-06-01')}
-          value={props.inputValue}
+          value={inputValue}
           onChange={(newValue) => {
-            props.handleChange(newValue);
+            handleChange(newValue);
           }}
           renderInput={(params) => (
             <TextField size="small" {...params} helperText={null} />

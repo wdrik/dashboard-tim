@@ -17,7 +17,7 @@
       "mes_ano": "01/2021",
       "produto": "BANDA LARGA",
       "ddd": "11",
-      "origem_comissao": "COMISSAO BASICA",
+      "origem_comissao": "INCENTIVO A VENDAS",
       "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
       "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
       "total_apurado": "239.994,00"
@@ -28,7 +28,7 @@
       "mes_ano": "01/2021",
       "produto": "BANDA LARGA",
       "ddd": "11",
-      "origem_comissao": "COMISSAO BASICA",
+      "origem_comissao": "ESTORNO",
       "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
       "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
       "total_apurado": "-500.000,00"
@@ -39,7 +39,7 @@
       "mes_ano": "01/2021",
       "produto": "BANDA LARGA",
       "ddd": "11",
-      "origem_comissao": "COMISSAO BASICA",
+      "origem_comissao": "CONTESTACAO",
       "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
       "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
       "total_apurado": "100.000,00"
@@ -50,10 +50,95 @@
       "mes_ano": "01/2021",
       "produto": "BANDA LARGA",
       "ddd": "11",
-      "origem_comissao": "COMISSAO BASICA",
+      "origem_comissao": "AJUSTE PAGAMENTO",
       "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
       "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
       "total_apurado": "100.000,00"
+    }
+  ],
+  "ds_ind_qualidade_parceiro": [
+    {
+      "id_ge": "12345",
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "regional": "TSP",
+      "produto": "CONTROLE",
+      "indicador": "POS_PRE_POS",
+      "qualidade": 20,
+      "total_acessos": 100630
+    },
+    {
+      "id_ge": "12346",
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "regional": "TSP",
+      "produto": "POS PAGO",
+      "indicador": "RECOMPRA",
+      "qualidade": 30,
+      "total_acessos": 100630
+    },
+    {
+      "id_ge": "12347",
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "regional": "TSP",
+      "produto": "POS PAGO",
+      "indicador": "INADIPLENCIA",
+      "qualidade": 10,
+      "total_acessos": 100630
+    },
+    {
+      "id_ge": "12348",
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "regional": "TSP",
+      "produto": "POS PAGO",
+      "indicador": "DOWNGRADE",
+      "qualidade": 30,
+      "total_acessos": 100630
+    },
+    {
+      "id_ge": "12349",
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "regional": "TSP",
+      "produto": "CONTROLE",
+      "indicador": "SUSPENSOS",
+      "qualidade": 20,
+      "total_acessos": 100630
+    },
+    {
+      "id_ge": "12350",
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "regional": "TSP",
+      "produto": "CONTROLE",
+      "indicador": "CHURN",
+      "qualidade": 15,
+      "total_acessos": 100630
+    }
+  ],
+  "ds_contestacao_parceiro": [
+    {
+      "id_ge": "12345",
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "status_contestacao": "PROCEDENTE",
+      "total_volume": 100
+    },
+    {
+      "id_ge": "12346",
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "status_contestacao": "IMPROCEDENTE",
+      "total_volume": 80
+    },
+    {
+      "id_ge": "12347",
+      "custcode_parceiro": "123456",
+      "mes_ano": "01/2021",
+      "status_contestacao": "EM_ANALISE",
+      "total_volume": 20
     }
   ]
 }
