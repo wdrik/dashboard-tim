@@ -4,6 +4,7 @@ import CommissionDashboard from './pages/CommissionDashboard';
 import CommissionManagementDashboard from './pages/CommissionManagementDashboard';
 import RefundDashboard from './pages/RefundDashboard';
 import RefundManagementDashboard from './pages/RefundManagementDashboard';
+import VariableCompensationDashboard from './pages/VariableCompensationDashboard';
 
 function Routes() {
   return (
@@ -21,6 +22,11 @@ function Routes() {
         <Route
           path="/refund-management-dashboard"
           element={<RefundManagementDashboard />}
+        />
+
+        <Route
+          path="/variable-compensation-dashboard"
+          element={<VariableCompensationDashboard />}
         />
       </Router>
     </BrowserRouter>
