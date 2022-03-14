@@ -56,6 +56,58 @@
       "total_apurado": "100.000,00"
     }
   ],
+  "ds_comissionamento_gestao": [
+    {
+      "mes_ano": "01/2021",
+      "grupo_economico": "FARO LIDER",
+      "produto": "BANDA LARGA",
+      "ddd": "11",
+      "origem_comissao": "COMISSAO BASICA",
+      "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
+      "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
+      "total_apurado": 340.0
+    },
+    {
+      "mes_ano": "01/2021",
+      "grupo_economico": "LOJAS AMERICANAS",
+      "produto": "CONTROLE",
+      "ddd": "12",
+      "origem_comissao": "INCENTIVO A VENDAS",
+      "tipo_comissao": "",
+      "comissao_detalhe": "CANVASS",
+      "total_apurado": 239.994
+    },
+    {
+      "mes_ano": "01/2021",
+      "grupo_economico": "LOJAS AMERICANAS",
+      "produto": "POS_PAGO",
+      "ddd": "14",
+      "origem_comissao": "ESTORNO",
+      "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
+      "comissao_detalhe": "ESTORNO BANDA LARGA",
+      "total_apurado": -500.0
+    },
+    {
+      "mes_ano": "01/2021",
+      "grupo_economico": "LOJAS AMERICANAS",
+      "produto": "BANDA LARGA",
+      "ddd": "11",
+      "origem_comissao": "CONTESTACAO",
+      "tipo_comissao": "CONTESTACAO",
+      "comissao_detalhe": "COMISSAO BASICA BANDA LARGA INSTALACAO",
+      "total_apurado": 100.0
+    },
+    {
+      "mes_ano": "01/2021",
+      "grupo_economico": "LOJAS AMERICANAS",
+      "produto": "BANDA LARGA",
+      "ddd": "11",
+      "origem_comissao": "AJUSTE PAGAMENTO",
+      "tipo_comissao": "COMISSAO BASICA BANDA LARGA",
+      "comissao_detalhe": "PARCELAMENTO DE ESTORNO, EXCEÇÃO, REPROCESSAMENTO, ND...",
+      "total_apurado": 100.0
+    }
+  ],
   "ds_ind_qualidade_parceiro": [
     {
       "id_ge": "12345",

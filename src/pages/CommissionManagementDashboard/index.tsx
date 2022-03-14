@@ -1,39 +1,92 @@
 import { useState } from 'react';
-
-import { SelectChangeEvent } from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import { SelectChangeEvent } from '@mui/material/Select';
 
 import CardWrapper from '../../components/CardWrapper';
-import HorizontalBarChart from '../../components/HorizontalBarChart';
 import CustomChart from '../../components/CustomChart';
-import RadarChart from '../../components/RadarChart';
-import DoughnutChart from '../../components/DoughnutChart';
-import PartnerInfo from '../../components/PartnerInfo';
 import MultiSelect from '../../components/MultiSelect';
 import CustomDatePicker from '../../components/CustomDatePicker';
+import TableGrid from '../../components/TableGrid';
+import RadarChart from '../../components/RadarChart';
 
+import { ICommissioningManagement, IHeader } from '../../@types/types';
 import { useFetch } from '../../hooks/useFetch';
-import { IPartnerContestation } from '../../@types/types';
 
 type IForm = {
   date: Date | null;
   product: string[];
   typeOfCommission: string[];
-  custcode: string[];
+  economicGroup: string[];
+  regional: string[];
 };
 
-function CommissionDashboard() {
-  const { data: partnerContestation } = useFetch<IPartnerContestation[]>(
-    '/ds_contestacao_parceiro'
-  );
+const headers: IHeader[] = [
+  {
+    label: 'INDICADOR',
+    align: 'left',
+  },
+  {
+    label: 'Jan',
+    align: 'right',
+  },
+  {
+    label: 'Fev',
+    align: 'right',
+  },
+  {
+    label: 'Mar',
+    align: 'right',
+  },
+  {
+    label: 'Abr',
+    align: 'right',
+  },
+];
+
+const rows = [
+  {
+    name: 'Frozen yoghurt1',
+    calories: 159,
+    fat: 6.0,
+    carbs: 24,
+    protein: 4.0,
+  },
+  {
+    name: 'Frozen yoghurt2',
+    calories: 159,
+    fat: 6.0,
+    carbs: 24,
+    protein: 4.0,
+  },
+  {
+    name: 'Frozen yoghurt3',
+    calories: 159,
+    fat: 6.0,
+    carbs: 24,
+    protein: 4.0,
+  },
+  {
+    name: 'Frozen yoghurt4',
+    calories: 159,
+    fat: 6.0,
+    carbs: 24,
+    protein: 4.0,
+  },
+];
+
+function CommissionDashboardManagement() {
+  const { data: commissioningManagement } = useFetch<
+    ICommissioningManagement[]
+  >('/ds_comissionamento_gestao');
 
   const [form, setForm] = useState<IForm>({
     date: new Date(),
     product: [],
     typeOfCommission: [],
-    custcode: [],
+    economicGroup: [],
+    regional: [],
   });
 
   const handleChange = (event: SelectChangeEvent<string[]>) => {
@@ -64,7 +117,7 @@ function CommissionDashboard() {
     <>
       <Grid container spacing={2} my={1}>
         <Grid item xs={3}>
-          <CardWrapper title="Comissão" />
+          <CardWrapper title="Comissão Bruta" />
         </Grid>
 
         <Grid item xs={3}>
@@ -72,19 +125,16 @@ function CommissionDashboard() {
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Comissão a Receber" />
+          <CardWrapper title="Comissão Paga" />
         </Grid>
 
         <Grid item xs={3}>
-          <PartnerInfo
-            partnerName="Nome do Parceiro"
-            classification="Classificação"
-          />
+          <CardWrapper title="Total Saldo Negativo" />
         </Grid>
       </Grid>
 
       <Grid container spacing={2} my={1}>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <CustomChart />
         </Grid>
 
@@ -92,8 +142,8 @@ function CommissionDashboard() {
           <CustomChart />
         </Grid>
 
-        <Grid item xs={2}>
-          <RadarChart />
+        <Grid item xs={3}>
+          <CustomChart />
         </Grid>
 
         <Grid item xs={3}>
@@ -134,10 +184,18 @@ function CommissionDashboard() {
             />
 
             <MultiSelect
-              tag="Custcode"
+              tag="Grupo Economico"
               options={['Omar Alexander', 'Carlos Abbott', 'Miriam Wagner']}
-              name="custcode"
-              inputValue={form.custcode}
+              name="economicGroup"
+              inputValue={form.economicGroup}
+              handleChange={handleChange}
+            />
+
+            <MultiSelect
+              tag="Regional"
+              options={['Omar Alexander', 'Carlos Abbott', 'Miriam Wagner']}
+              name="regional"
+              inputValue={form.regional}
               handleChange={handleChange}
             />
 
@@ -149,25 +207,16 @@ function CommissionDashboard() {
       </Grid>
 
       <Grid container spacing={2} my={1}>
-        <Grid item xs={4}>
-          <HorizontalBarChart />
+        <Grid item xs={9}>
+          <TableGrid headers={headers} rows={rows} />
         </Grid>
 
         <Grid item xs={3}>
-          <CustomChart />
-        </Grid>
-
-        <Grid item xs={2}>
-          {partnerContestation && (
-            <DoughnutChart
-              labels={partnerContestation?.map((x) => x.status_contestacao)}
-              data={partnerContestation?.map((x) => x.total_volume)}
-            />
-          )}
+          <RadarChart />
         </Grid>
       </Grid>
     </>
   );
 }
 
-export default CommissionDashboard;
+export default CommissionDashboardManagement;

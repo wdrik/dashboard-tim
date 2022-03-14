@@ -16,10 +16,10 @@ import { IPartnerContestation } from '../../@types/types';
 import { useFetch } from '../../hooks/useFetch';
 
 type IForm = {
+  date: Date | null;
   product: string[];
   typeOfCommission: string[];
   custcode: string[];
-  date: Date | null;
 };
 
 function RefundDashboard() {
@@ -28,10 +28,10 @@ function RefundDashboard() {
   );
 
   const [form, setForm] = useState<IForm>({
+    date: new Date(),
     product: [],
     typeOfCommission: [],
     custcode: [],
-    date: new Date(),
   });
 
   const handleChange = (event: SelectChangeEvent<string[]>) => {

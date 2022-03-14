@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes as Router, Route } from 'react-router-dom';
 
 import CommissionDashboard from './pages/CommissionDashboard';
-import CommissionDashboardManagement from './pages/CommissionDashboardManagement';
+import CommissionManagementDashboard from './pages/CommissionManagementDashboard';
 import RefundDashboard from './pages/RefundDashboard';
 
 function Routes() {
@@ -10,8 +10,8 @@ function Routes() {
       <Router>
         <Route path="/commission-dashboard" element={<CommissionDashboard />} />
         <Route
-          path="/commission-dashboard-management"
-          element={<CommissionDashboardManagement />}
+          path="/commission-management-dashboard"
+          element={<CommissionManagementDashboard />}
         />
         <Route path="/refund-dashboard" element={<RefundDashboard />} />
       </Router>
