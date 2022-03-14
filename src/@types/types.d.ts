@@ -20,4 +20,5 @@ export type ICommissioningManagement = {
 export type IHeader = {
   label: string;
   align: 'left' | 'center' | 'right' | 'justify' | 'inherit' | undefined;
+  key: string;
 };

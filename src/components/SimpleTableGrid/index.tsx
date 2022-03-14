@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 
 import { IHeader } from '../../@types/types';
 
-interface TableGridProps {
+interface SimpleTableGridProps {
   rows: any[];
   headers: IHeader[];
 }
@@ -30,7 +30,7 @@ const StyledTableRow = styled(TableRow)(() => ({
   },
 }));
 
-function SimpleTableGrid({ headers, rows }: TableGridProps) {
+function SimpleTableGrid({ headers, rows }: SimpleTableGridProps) {
   return (
     <TableContainer component={Paper}>
       <Table size="small" aria-label="customized table">
@@ -46,14 +46,12 @@ function SimpleTableGrid({ headers, rows }: TableGridProps) {
 
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+            <StyledTableRow key={row.kpis}>
+              {headers.map((header) => (
+                <StyledTableCell key={header.key} align={header.align}>
+                  {row[`${header.key}`]}
+                </StyledTableCell>
+              ))}
             </StyledTableRow>
           ))}
         </TableBody>

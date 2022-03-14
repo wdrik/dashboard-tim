@@ -49,14 +49,12 @@ function TableGrid({ headers, rows }: TableGridProps) {
 
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+            <StyledTableRow key={row.kpis}>
+              {headers.map((header) => (
+                <StyledTableCell key={header.key} align={header.align}>
+                  {row[`${header.key}`]}
+                </StyledTableCell>
+              ))}
             </StyledTableRow>
           ))}
         </TableBody>

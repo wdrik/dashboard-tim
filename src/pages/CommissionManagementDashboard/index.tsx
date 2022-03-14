@@ -26,22 +26,27 @@ const headers: IHeader[] = [
   {
     label: 'INDICADOR',
     align: 'left',
+    key: 'name',
   },
   {
     label: 'Jan',
     align: 'right',
+    key: 'calories',
   },
   {
     label: 'Fev',
     align: 'right',
+    key: 'fat',
   },
   {
     label: 'Mar',
     align: 'right',
+    key: 'carbs',
   },
   {
     label: 'Abr',
     align: 'right',
+    key: 'protein',
   },
 ];
 
