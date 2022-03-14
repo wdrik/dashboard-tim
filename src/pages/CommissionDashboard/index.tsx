@@ -15,7 +15,7 @@ import MultiSelect from '../../components/MultiSelect';
 import CustomDatePicker from '../../components/CustomDatePicker';
 
 import { useFetch } from '../../hooks/useFetch';
-import { IPartnerContestation } from '../../@types';
+import { IPartnerContestation } from '../../@types/types';
 
 type IForm = {
   product: string[];
@@ -61,102 +61,112 @@ function CommissionDashboard() {
   };
 
   return (
-    <Grid container spacing={2} my={1}>
-      <Grid item xs={3}>
-        <CardWrapper title="Comissão" />
-      </Grid>
+    <>
+      <Grid container spacing={2} my={1}>
+        <Grid item xs={3}>
+          <CardWrapper title="Comissão" />
+        </Grid>
 
-      <Grid item xs={3}>
-        <CardWrapper title="Total Estornos" />
-      </Grid>
+        <Grid item xs={3}>
+          <CardWrapper title="Total Estornos" />
+        </Grid>
 
-      <Grid item xs={3}>
-        <CardWrapper title="Comissão a Receber" />
-      </Grid>
+        <Grid item xs={3}>
+          <CardWrapper title="Comissão a Receber" />
+        </Grid>
 
-      <Grid item xs={3}>
-        <PartnerInfo
-          partnerName="Nome do Parceiro"
-          classification="Classificação"
-        />
-      </Grid>
-
-      <Grid item xs={4}>
-        <CustomChart />
-      </Grid>
-
-      <Grid item xs={3}>
-        <CustomChart />
-      </Grid>
-
-      <Grid item xs={2}>
-        <RadarChart />
-      </Grid>
-
-      <Grid item xs={3}>
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          noValidate
-          autoComplete="off"
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-end',
-          }}
-        >
-          <CustomDatePicker
-            inputValue={form.date}
-            handleChange={handleDateChange}
+        <Grid item xs={3}>
+          <PartnerInfo
+            partnerName="Nome do Parceiro"
+            classification="Classificação"
           />
-
-          <MultiSelect
-            tag="Produto"
-            options={['Bradley Wilkerson', 'Virginia Andrews', 'Kelly Snyder']}
-            name="product"
-            inputValue={form.product}
-            handleChange={handleChange}
-          />
-
-          <MultiSelect
-            tag="Tipo de Comissão"
-            options={['Oliver Hansen', 'Van Henry', 'April Tucker']}
-            name="typeOfCommission"
-            inputValue={form.typeOfCommission}
-            handleChange={handleChange}
-          />
-
-          <MultiSelect
-            tag="Custcode"
-            options={['Omar Alexander', 'Carlos Abbott', 'Miriam Wagner']}
-            name="custcode"
-            inputValue={form.custcode}
-            handleChange={handleChange}
-          />
-
-          <Button variant="contained" size="small" type="submit">
-            Filtrar
-          </Button>
-        </Box>
+        </Grid>
       </Grid>
 
-      <Grid item xs={4}>
-        <HorizontalBarChart />
+      <Grid container spacing={2} my={1}>
+        <Grid item xs={4}>
+          <CustomChart />
+        </Grid>
+
+        <Grid item xs={3}>
+          <CustomChart />
+        </Grid>
+
+        <Grid item xs={2}>
+          <RadarChart />
+        </Grid>
+
+        <Grid item xs={3}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            autoComplete="off"
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+            }}
+          >
+            <CustomDatePicker
+              inputValue={form.date}
+              handleChange={handleDateChange}
+            />
+
+            <MultiSelect
+              tag="Produto"
+              options={[
+                'Bradley Wilkerson',
+                'Virginia Andrews',
+                'Kelly Snyder',
+              ]}
+              name="product"
+              inputValue={form.product}
+              handleChange={handleChange}
+            />
+
+            <MultiSelect
+              tag="Tipo de Comissão"
+              options={['Oliver Hansen', 'Van Henry', 'April Tucker']}
+              name="typeOfCommission"
+              inputValue={form.typeOfCommission}
+              handleChange={handleChange}
+            />
+
+            <MultiSelect
+              tag="Custcode"
+              options={['Omar Alexander', 'Carlos Abbott', 'Miriam Wagner']}
+              name="custcode"
+              inputValue={form.custcode}
+              handleChange={handleChange}
+            />
+
+            <Button variant="contained" size="small" type="submit">
+              Filtrar
+            </Button>
+          </Box>
+        </Grid>
       </Grid>
 
-      <Grid item xs={3}>
-        <CustomChart />
-      </Grid>
+      <Grid container spacing={2} my={1}>
+        <Grid item xs={4}>
+          <HorizontalBarChart />
+        </Grid>
 
-      <Grid item xs={2}>
-        {partnerContestation && (
-          <DoughnutChart
-            labels={partnerContestation?.map((x) => x.status_contestacao)}
-            data={partnerContestation?.map((x) => x.total_volume)}
-          />
-        )}
+        <Grid item xs={3}>
+          <CustomChart />
+        </Grid>
+
+        <Grid item xs={2}>
+          {partnerContestation && (
+            <DoughnutChart
+              labels={partnerContestation?.map((x) => x.status_contestacao)}
+              data={partnerContestation?.map((x) => x.total_volume)}
+            />
+          )}
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 }
 
