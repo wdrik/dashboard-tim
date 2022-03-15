@@ -17,6 +17,7 @@ import CustomDatePicker from '../../components/CustomDatePicker';
 
 import { useFetch } from '../../hooks/useFetch';
 import { IPartnerContestation } from '../../@types/types';
+import Title from '../../components/Title';
 
 type IForm = {
   date: Date | null;
@@ -102,14 +103,17 @@ function CommissionDashboard() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={4}>
+          <Title title="Comissão Mensal (em Mil)" />
           <CustomChart />
         </Grid>
 
         <Grid item xs={3}>
+          <Title title="Produtividade por Produto" />
           <CustomChart />
         </Grid>
 
         <Grid item xs={2}>
+          <Title title="Indicador de Qualidade" />
           <RadarChart />
         </Grid>
 
@@ -167,14 +171,17 @@ function CommissionDashboard() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={4}>
+          <Title title="Tipo de Comissão (em Mil)" />
           <HorizontalBarChart />
         </Grid>
 
         <Grid item xs={3}>
+          <Title title="Mix Produtos (Volume)" />
           <CustomChart />
         </Grid>
 
         <Grid item xs={2}>
+          <Title title="Contestações Analisadas" />
           {partnerContestation && (
             <DoughnutChart
               labels={partnerContestation?.map((x) => x.status_contestacao)}

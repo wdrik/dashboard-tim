@@ -28,11 +28,11 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'right' as const,
+      display: false,
+      position: 'top' as const,
     },
     title: {
-      display: true,
-      text: 'Chart.js Horizontal Bar Chart',
+      display: false,
     },
   },
 };

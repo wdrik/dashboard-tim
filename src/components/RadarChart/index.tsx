@@ -18,6 +18,19 @@ ChartJS.register(
   Legend
 );
 
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      display: false,
+      position: 'top' as const,
+    },
+    title: {
+      display: false,
+    },
+  },
+};
+
 export const data = {
   labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
   datasets: [
@@ -39,7 +52,7 @@ export const data = {
 };
 
 function RadarChart() {
-  return <Radar data={data} />;
+  return <Radar data={data} options={options} />;
 }
 
 export default RadarChart;
