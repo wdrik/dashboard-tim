@@ -14,6 +14,7 @@ import DoughnutChart from '../../components/DoughnutChart';
 
 import { IPartnerContestation } from '../../@types/types';
 import { useFetch } from '../../hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
 
 type IForm = {
   date: Date | null;
@@ -58,8 +59,24 @@ function RefundDashboard() {
     console.log('form submitted', form);
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
+      <ul>
+        <li onClick={() => navigate('/commission-dashboard')}>dashboard 01</li>
+        <li onClick={() => navigate('/commission-management-dashboard')}>
+          dashboard 02
+        </li>
+        <li onClick={() => navigate('/refund-dashboard')}>dashboard 03</li>
+        <li onClick={() => navigate('/refund-management-dashboard')}>
+          dashboard 04
+        </li>
+        <li onClick={() => navigate('/variable-compensation-dashboard')}>
+          dashboard 05
+        </li>
+      </ul>
+
       <Grid container spacing={2} my={1}>
         <Grid item xs={3}>
           <CardWrapper title="Reembolso" />
