@@ -1,7 +1,22 @@
+import { useState } from 'react';
+import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { SelectChangeEvent } from '@mui/material/Select';
+import Button from '@mui/material/Button';
+
+import SimpleTableGrid from '../../components/SimpleTableGrid';
+import CustomDatePicker from '../../components/CustomDatePicker';
+import MultiSelect from '../../components/MultiSelect';
 
 import { IHeader } from '../../@types/types';
-import SimpleTableGrid from '../../components/SimpleTableGrid';
+import LineChart from '../../components/LineChart';
+
+type IForm = {
+  date: Date | null;
+  team: string[];
+  store: string[];
+  regional: string[];
+};
 
 const headers: IHeader[] = [
   {
@@ -49,27 +64,27 @@ const headers: IHeader[] = [
 const rows = [
   {
     kpis: 'Frozen yoghurt1',
-    meta: 159,
+    meta: 152,
     realizado_bruto: 6.0,
     atingimento: 24,
-    volume_qualidade: 4.0,
-    deflator_acelerador: 4.0,
-    realizado_liquido: 4.0,
-    atingimento_final: 4.0,
+    volume_qualidade: 4.1,
+    deflator_acelerador: 4.1,
+    realizado_liquido: 4.1,
+    atingimento_final: 4.1,
   },
   {
     kpis: 'Frozen yoghurt2',
     meta: 159,
     realizado_bruto: 6.0,
     atingimento: 24,
-    volume_qualidade: 4.0,
-    deflator_acelerador: 4.0,
-    realizado_liquido: 4.0,
-    atingimento_final: 4.0,
+    volume_qualidade: 4.2,
+    deflator_acelerador: 4.2,
+    realizado_liquido: 4.2,
+    atingimento_final: 4.2,
   },
   {
     kpis: 'Frozen yoghurt3',
-    meta: 159,
+    meta: 144,
     realizado_bruto: 6.0,
     atingimento: 24,
     volume_qualidade: 4.0,
@@ -80,11 +95,99 @@ const rows = [
 ];
 
 function VariableCompensationDashboard() {
+  const [form, setForm] = useState<IForm>({
+    date: new Date(),
+    team: [],
+    store: [],
+    regional: [],
+  });
+
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
+    const {
+      target: { value, name },
+    } = event;
+
+    setForm({
+      ...form,
+      [name]: typeof value === 'string' ? value.split(',') : value,
+    });
+  };
+
+  const handleDateChange = (newValue: Date | null) => {
+    setForm({
+      ...form,
+      date: newValue,
+    });
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    console.log('form submitted', form);
+  };
+
   return (
     <>
       <Grid container spacing={2} my={1}>
         <Grid item xs={9}>
           <SimpleTableGrid headers={headers} rows={rows} />
+        </Grid>
+
+        <Grid item xs={3}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            autoComplete="off"
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-end',
+            }}
+          >
+            <CustomDatePicker
+              inputValue={form.date}
+              handleChange={handleDateChange}
+            />
+
+            <MultiSelect
+              tag="Equipe"
+              options={[
+                'Bradley Wilkerson',
+                'Virginia Andrews',
+                'Kelly Snyder',
+              ]}
+              name="team"
+              inputValue={form.team}
+              handleChange={handleChange}
+            />
+
+            <MultiSelect
+              tag="Loja"
+              options={['Oliver Hansen', 'Van Henry', 'April Tucker']}
+              name="store"
+              inputValue={form.store}
+              handleChange={handleChange}
+            />
+
+            <MultiSelect
+              tag="Regional"
+              options={['Omar Alexander', 'Carlos Abbott', 'Miriam Wagner']}
+              name="regional"
+              inputValue={form.regional}
+              handleChange={handleChange}
+            />
+
+            <Button variant="contained" size="small" type="submit">
+              Filtrar
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={2} my={1}>
+        <Grid item xs={6}>
+          <LineChart />
         </Grid>
       </Grid>
     </>
