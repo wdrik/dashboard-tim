@@ -11,6 +11,7 @@ import MultiSelect from '../../components/MultiSelect';
 import { IHeader } from '../../@types/types';
 import LineChart from '../../components/LineChart';
 import { useNavigate } from 'react-router-dom';
+import Title from '../../components/Title';
 
 type IForm = {
   date: Date | null;
@@ -64,6 +65,7 @@ const headers: IHeader[] = [
 
 const rows = [
   {
+    id: 1,
     kpis: 'Frozen yoghurt1',
     meta: 152,
     realizado_bruto: 6.0,
@@ -74,6 +76,7 @@ const rows = [
     atingimento_final: 4.1,
   },
   {
+    id: 2,
     kpis: 'Frozen yoghurt2',
     meta: 159,
     realizado_bruto: 6.0,
@@ -84,6 +87,7 @@ const rows = [
     atingimento_final: 4.2,
   },
   {
+    id: 3,
     kpis: 'Frozen yoghurt3',
     meta: 144,
     realizado_bruto: 6.0,
@@ -133,10 +137,10 @@ function VariableCompensationDashboard() {
     <>
       <ul>
         <li onClick={() => navigate('/commission-dashboard')}>dashboard 01</li>
+        <li onClick={() => navigate('/refund-dashboard')}>dashboard 02</li>
         <li onClick={() => navigate('/commission-management-dashboard')}>
-          dashboard 02
+          dashboard 03
         </li>
-        <li onClick={() => navigate('/refund-dashboard')}>dashboard 03</li>
         <li onClick={() => navigate('/refund-management-dashboard')}>
           dashboard 04
         </li>
@@ -147,6 +151,7 @@ function VariableCompensationDashboard() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={9}>
+          <Title title="Como sua remuneração foi composta" />
           <SimpleTableGrid headers={headers} rows={rows} />
         </Grid>
 
@@ -204,6 +209,7 @@ function VariableCompensationDashboard() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={6}>
+          <Title title="Evolução Atingimento" />
           <LineChart />
         </Grid>
       </Grid>

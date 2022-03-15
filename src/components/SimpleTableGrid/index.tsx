@@ -47,9 +47,12 @@ function SimpleTableGrid({ headers, rows }: SimpleTableGridProps) {
 
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.kpis}>
+            <StyledTableRow key={row.id}>
               {headers.map((header) => (
-                <StyledTableCell key={header.key} align={header.align}>
+                <StyledTableCell
+                  key={`${row.id}-${header.key}`}
+                  align={header.align}
+                >
                   {row[`${header.key}`]}
                 </StyledTableCell>
               ))}

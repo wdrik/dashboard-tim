@@ -15,6 +15,7 @@ import DoughnutChart from '../../components/DoughnutChart';
 import { IPartnerContestation } from '../../@types/types';
 import { useFetch } from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
+import Title from '../../components/Title';
 
 type IForm = {
   date: Date | null;
@@ -65,10 +66,10 @@ function RefundDashboard() {
     <>
       <ul>
         <li onClick={() => navigate('/commission-dashboard')}>dashboard 01</li>
+        <li onClick={() => navigate('/refund-dashboard')}>dashboard 02</li>
         <li onClick={() => navigate('/commission-management-dashboard')}>
-          dashboard 02
+          dashboard 03
         </li>
-        <li onClick={() => navigate('/refund-dashboard')}>dashboard 03</li>
         <li onClick={() => navigate('/refund-management-dashboard')}>
           dashboard 04
         </li>
@@ -79,15 +80,30 @@ function RefundDashboard() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={3}>
-          <CardWrapper title="Reembolso" />
+          <CardWrapper
+            title="Reembolso"
+            value={295900}
+            percentage={15}
+            iconName="paid_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Total Price Back" />
+          <CardWrapper
+            title="Total Price Back"
+            value={-11900}
+            percentage={12}
+            iconName="restore_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Reembolso a Receber" />
+          <CardWrapper
+            title="Reembolso a Receber"
+            value={284000}
+            percentage={4}
+            iconName="account_balance_wallet_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
@@ -100,10 +116,12 @@ function RefundDashboard() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={5}>
+          <Title title="Reembolso Mensal" />
           <CustomChart />
         </Grid>
 
         <Grid item xs={4}>
+          <Title title="Mix Fidelizado" />
           <CustomChart />
         </Grid>
 
@@ -161,14 +179,18 @@ function RefundDashboard() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={4}>
+          <Title title="Tipo Reembolso" />
           <HorizontalBarChart />
         </Grid>
 
         <Grid item xs={4}>
+          <Title title="Não Pagos" />
           <HorizontalBarChart />
         </Grid>
 
         <Grid item xs={2}>
+          <Title title="Contestações Analisadas" />
+
           {partnerContestation && (
             <DoughnutChart
               labels={partnerContestation?.map((x) => x.status_contestacao)}

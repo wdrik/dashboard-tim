@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -10,10 +11,10 @@ import MultiSelect from '../../components/MultiSelect';
 import CustomDatePicker from '../../components/CustomDatePicker';
 import TableGrid from '../../components/TableGrid';
 import RadarChart from '../../components/RadarChart';
+import Title from '../../components/Title';
 
 import { ICommissioningManagement, IHeader } from '../../@types/types';
 import { useFetch } from '../../hooks/useFetch';
-import { useNavigate } from 'react-router-dom';
 
 type IForm = {
   date: Date | null;
@@ -53,6 +54,7 @@ const headers: IHeader[] = [
 
 const rows = [
   {
+    id: 1,
     name: 'Frozen yoghurt1',
     calories: 159,
     fat: 6.0,
@@ -60,6 +62,7 @@ const rows = [
     protein: 4.0,
   },
   {
+    id: 2,
     name: 'Frozen yoghurt2',
     calories: 159,
     fat: 6.0,
@@ -67,6 +70,7 @@ const rows = [
     protein: 4.0,
   },
   {
+    id: 3,
     name: 'Frozen yoghurt3',
     calories: 159,
     fat: 6.0,
@@ -74,6 +78,7 @@ const rows = [
     protein: 4.0,
   },
   {
+    id: 4,
     name: 'Frozen yoghurt4',
     calories: 159,
     fat: 6.0,
@@ -125,10 +130,10 @@ function CommissionDashboardManagement() {
     <>
       <ul>
         <li onClick={() => navigate('/commission-dashboard')}>dashboard 01</li>
+        <li onClick={() => navigate('/refund-dashboard')}>dashboard 02</li>
         <li onClick={() => navigate('/commission-management-dashboard')}>
-          dashboard 02
+          dashboard 03
         </li>
-        <li onClick={() => navigate('/refund-dashboard')}>dashboard 03</li>
         <li onClick={() => navigate('/refund-management-dashboard')}>
           dashboard 04
         </li>
@@ -139,32 +144,55 @@ function CommissionDashboardManagement() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={3}>
-          <CardWrapper title="Comissão Bruta" />
+          <CardWrapper
+            title="Comissão Bruta"
+            value={295000}
+            percentage={15}
+            iconName="paid_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Total Estornos" />
+          <CardWrapper
+            title="Total Estornos"
+            value={-11900}
+            percentage={12}
+            iconName="restore_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Comissão Paga" />
+          <CardWrapper
+            title="Comissão Paga"
+            value={284000}
+            percentage={4}
+            iconName="account_balance_wallet_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Total Saldo Negativo" />
+          <CardWrapper
+            title="Total Saldo Negativo"
+            value={284000}
+            percentage={4}
+            iconName="calculate_icon"
+          />
         </Grid>
       </Grid>
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={3}>
+          <Title title="Comissão Mensal (em Mil)" />
           <CustomChart />
         </Grid>
 
         <Grid item xs={3}>
+          <Title title="Produtividade por Produto" />
           <CustomChart />
         </Grid>
 
         <Grid item xs={3}>
+          <Title title="Mix Produtos (Volume)" />
           <CustomChart />
         </Grid>
 
@@ -234,6 +262,7 @@ function CommissionDashboardManagement() {
         </Grid>
 
         <Grid item xs={3}>
+          <Title title="Indicador de Qualidade" />
           <RadarChart />
         </Grid>
       </Grid>

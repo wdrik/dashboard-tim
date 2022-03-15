@@ -13,6 +13,7 @@ import TableGrid from '../../components/TableGrid';
 
 import { IHeader } from '../../@types/types';
 import { useNavigate } from 'react-router-dom';
+import Title from '../../components/Title';
 
 type IForm = {
   date: Date | null;
@@ -52,6 +53,7 @@ const headers: IHeader[] = [
 
 const rows = [
   {
+    id: 1,
     name: 'Frozen yoghurt1',
     calories: 159,
     fat: 6.0,
@@ -59,6 +61,7 @@ const rows = [
     protein: 4.0,
   },
   {
+    id: 2,
     name: 'Frozen yoghurt2',
     calories: 159,
     fat: 6.0,
@@ -66,6 +69,7 @@ const rows = [
     protein: 4.0,
   },
   {
+    id: 3,
     name: 'Frozen yoghurt3',
     calories: 159,
     fat: 6.0,
@@ -73,6 +77,7 @@ const rows = [
     protein: 4.0,
   },
   {
+    id: 4,
     name: 'Frozen yoghurt4',
     calories: 159,
     fat: 6.0,
@@ -120,10 +125,10 @@ function RefundManagementDashboard() {
     <>
       <ul>
         <li onClick={() => navigate('/commission-dashboard')}>dashboard 01</li>
+        <li onClick={() => navigate('/refund-dashboard')}>dashboard 02</li>
         <li onClick={() => navigate('/commission-management-dashboard')}>
-          dashboard 02
+          dashboard 03
         </li>
-        <li onClick={() => navigate('/refund-dashboard')}>dashboard 03</li>
         <li onClick={() => navigate('/refund-management-dashboard')}>
           dashboard 04
         </li>
@@ -134,27 +139,46 @@ function RefundManagementDashboard() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={3}>
-          <CardWrapper title="Reembolso" />
+          <CardWrapper
+            title="Reembolso"
+            value={295000}
+            percentage={15}
+            iconName="paid_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Total Price Back" />
+          <CardWrapper
+            title="Total Price Back"
+            value={-11500}
+            percentage={12}
+            iconName="restore_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Reembolso a Receber" />
+          <CardWrapper
+            title="Reembolso a Receber"
+            value={284000}
+            percentage={4}
+            iconName="account_balance_wallet_icon"
+          />
         </Grid>
       </Grid>
+
       <Grid container spacing={2} my={1}>
         <Grid item xs={3}>
+          <Title title="Reembolso Mensal" />
           <CustomChart />
         </Grid>
 
         <Grid item xs={3}>
+          <Title title="Mix Fidelizado" />
           <CustomChart />
         </Grid>
 
         <Grid item xs={3}>
+          <Title title="Não Pagos" />
           <HorizontalBarChart />
         </Grid>
 
@@ -217,6 +241,7 @@ function RefundManagementDashboard() {
           </Box>
         </Grid>
       </Grid>
+
       <Grid container spacing={2} my={1}>
         <Grid item xs={12}>
           <TableGrid headers={headers} rows={rows} />

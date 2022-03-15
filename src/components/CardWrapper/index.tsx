@@ -1,19 +1,28 @@
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import Box from '@mui/system/Box';
-import PaidIcon from '@mui/icons-material/Paid';
 import CardContent from '@mui/material/CardContent';
+import Icon from '@mui/material/Icon';
 
+import { ReactComponent as ArrowGreen } from '../../assets/images/arrow-green.svg';
 interface CardWrapperProps {
   title: string;
+  value?: number;
+  percentage?: number;
+  iconName?: string;
 }
 
-function CardWrapper(props: CardWrapperProps) {
+function CardWrapper({
+  title,
+  value = 0,
+  percentage = 0,
+  iconName,
+}: CardWrapperProps) {
   return (
     <Card variant="outlined">
       <CardContent style={{ padding: '6px' }}>
         <Typography align="center" component="p">
-          {props.title}
+          {title}
         </Typography>
 
         <Box
@@ -23,17 +32,33 @@ function CardWrapper(props: CardWrapperProps) {
             justifyContent: 'center',
           }}
         >
-          <PaidIcon />
-          <Typography component="span">R$ 295.900,00</Typography>
+          <Icon sx={{ marginRight: '8px' }}>{iconName}</Icon>
+
+          <Typography component="span" color="#1565c0">
+            {value.toLocaleString('pt-br', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </Typography>
         </Box>
 
         <Box
           sx={{
             display: 'flex',
             justifyContent: 'flex-end',
+            alignItems: 'center',
           }}
         >
-          <Typography component="span">15%</Typography>
+          <Box
+            sx={{
+              marginRight: '4px',
+              transform: value < 0 ? 'rotate(-180deg)' : '',
+            }}
+          >
+            <ArrowGreen />
+          </Box>
+
+          <Typography component="span">{`${percentage}%`}</Typography>
         </Box>
       </CardContent>
     </Card>

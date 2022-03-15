@@ -68,10 +68,10 @@ function CommissionDashboard() {
     <>
       <ul>
         <li onClick={() => navigate('/commission-dashboard')}>dashboard 01</li>
+        <li onClick={() => navigate('/refund-dashboard')}>dashboard 02</li>
         <li onClick={() => navigate('/commission-management-dashboard')}>
-          dashboard 02
+          dashboard 03
         </li>
-        <li onClick={() => navigate('/refund-dashboard')}>dashboard 03</li>
         <li onClick={() => navigate('/refund-management-dashboard')}>
           dashboard 04
         </li>
@@ -82,15 +82,30 @@ function CommissionDashboard() {
 
       <Grid container spacing={2} my={1}>
         <Grid item xs={3}>
-          <CardWrapper title="Comissão" />
+          <CardWrapper
+            title="Comissão"
+            value={295000}
+            percentage={15}
+            iconName="paid_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Total Estornos" />
+          <CardWrapper
+            title="Total Estornos"
+            value={-11500}
+            percentage={12}
+            iconName="restore_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
-          <CardWrapper title="Comissão a Receber" />
+          <CardWrapper
+            title="Comissão a Receber"
+            value={284000}
+            percentage={4}
+            iconName="account_balance_wallet_icon"
+          />
         </Grid>
 
         <Grid item xs={3}>
@@ -100,7 +115,6 @@ function CommissionDashboard() {
           />
         </Grid>
       </Grid>
-
       <Grid container spacing={2} my={1}>
         <Grid item xs={4}>
           <Title title="Comissão Mensal (em Mil)" />
@@ -168,7 +182,6 @@ function CommissionDashboard() {
           </Box>
         </Grid>
       </Grid>
-
       <Grid container spacing={2} my={1}>
         <Grid item xs={4}>
           <Title title="Tipo de Comissão (em Mil)" />
