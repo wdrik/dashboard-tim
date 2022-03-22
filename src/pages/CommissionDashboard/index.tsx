@@ -14,10 +14,13 @@ import DoughnutChart from '../../components/DoughnutChart';
 import PartnerInfo from '../../components/PartnerInfo';
 import MultiSelect from '../../components/MultiSelect';
 import CustomDatePicker from '../../components/CustomDatePicker';
-
-import { useFetch } from '../../hooks/useFetch';
-import { IPartnerContestation } from '../../@types/types';
 import Title from '../../components/Title';
+
+import {
+  IPartnerCommissioning,
+  IPartnerContestation,
+} from '../../@types/types';
+import { useFetch } from '../../hooks/useFetch';
 
 type IForm = {
   date: Date | null;
@@ -30,6 +33,12 @@ function CommissionDashboard() {
   const { data: partnerContestation } = useFetch<IPartnerContestation[]>(
     '/ds_contestacao_parceiro'
   );
+
+  const { data: partnerCommissioning } = useFetch<IPartnerCommissioning[]>(
+    '/ds_comissionamento_parceiro'
+  );
+
+  console.log(partnerCommissioning);
 
   const [form, setForm] = useState<IForm>({
     date: new Date(),
@@ -115,6 +124,7 @@ function CommissionDashboard() {
           />
         </Grid>
       </Grid>
+
       <Grid container spacing={2} my={1}>
         <Grid item xs={4}>
           <Title title="Comissão Mensal (em Mil)" />
@@ -182,6 +192,7 @@ function CommissionDashboard() {
           </Box>
         </Grid>
       </Grid>
+
       <Grid container spacing={2} my={1}>
         <Grid item xs={4}>
           <Title title="Tipo de Comissão (em Mil)" />

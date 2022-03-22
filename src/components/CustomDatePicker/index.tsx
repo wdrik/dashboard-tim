@@ -14,7 +14,7 @@ interface CustomDatePickerProps {
 function CustomDatePicker({ inputValue, handleChange }: CustomDatePickerProps) {
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
-      <FormControl sx={{ width: '100%', mb: 2 }}>
+      <FormControl sx={{ width: '100%', mb: 1 }}>
         <DatePicker
           views={['year', 'month']}
           label="Mês e Ano"

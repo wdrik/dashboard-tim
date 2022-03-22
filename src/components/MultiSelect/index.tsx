@@ -22,7 +22,7 @@ function MultiSelect({
   handleChange,
 }: MultiSelectProps) {
   return (
-    <FormControl sx={{ width: '100%', mb: 2 }}>
+    <FormControl sx={{ width: '100%', mb: 1 }}>
       <InputLabel id="multiple-checkbox-label">{tag}</InputLabel>
       <Select
         labelId="multiple-checkbox-label"

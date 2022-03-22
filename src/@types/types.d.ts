@@ -6,6 +6,18 @@ export type IPartnerContestation = {
   total_volume: number;
 };
 
+export type IPartnerCommissioning = {
+  id_ge: number;
+  custcode_parceiro: string;
+  mes_ano: string;
+  produto: string;
+  ddd: string;
+  origem_comissao: string;
+  tipo_comissao: string;
+  comissao_detalhe: string;
+  total_apurado: number;
+};
+
 export type ICommissioningManagement = {
   mes_ano: string;
   grupo_economico: string;
